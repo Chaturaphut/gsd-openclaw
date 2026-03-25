@@ -1,0 +1,23 @@
+{
+  "phase": "phase-1-example",
+  "status": "complete",
+  "completedTasks": ["task-1", "task-2", "task-3"],
+  "pendingTasks": [],
+  "decisions": [
+    {
+      "id": "D001",
+      "summary": "Decision description",
+      "reason": "Why this choice was made"
+    }
+  ],
+  "blockers": [],
+  "nextSteps": ["Start phase-2"],
+  "modifiedFiles": [
+    "src/example/file1.ts",
+    "src/example/file2.ts"
+  ],
+  "warnings": [
+    "Optional: known issues or things to watch out for"
+  ],
+  "timestamp": "2026-01-01T00:00:00Z"
+}
