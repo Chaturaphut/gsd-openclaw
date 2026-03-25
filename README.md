@@ -14,6 +14,11 @@
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.1.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
+  <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
+</p>
+
+<p align="center">
+  <em>Built on top of <a href="https://github.com/gsd-build/get-shit-done"><strong>Get Shit Done (GSD)</strong></a> by <a href="https://github.com/gsd-build">TÂCHES</a> — the original spec-driven development system for AI coding agents.</em>
 </p>
 
 ---
@@ -361,10 +366,18 @@ GSD-OpenClaw is designed for teams with these roles:
 
 ---
 
-## 🙏 Credits
+## 🙏 Credits & Acknowledgments
 
-- **[Get Shit Done (GSD)](https://github.com/gsd-build/get-shit-done)** by TÂCHES — The original spec-driven development system for Claude Code. GSD-OpenClaw adapts its methodology for multi-agent orchestration.
-- **[OpenClaw](https://openclaw.ai)** — The AI agent platform that makes multi-agent workflows possible.
+> **This project would not exist without [Get Shit Done (GSD)](https://github.com/gsd-build/get-shit-done) by [TÂCHES](https://github.com/gsd-build).**
+
+GSD is the original spec-driven development system that pioneered structured AI coding workflows. GSD-OpenClaw takes its core methodology — the discipline of planning before coding, verification gates, and structured documentation — and adapts it for **multi-agent orchestration** on OpenClaw.
+
+**If you're using a single AI coding agent** (Claude Code, Cursor, Copilot, etc.), we highly recommend using **[the original GSD](https://github.com/gsd-build/get-shit-done)** directly — it's purpose-built for that use case and actively maintained with frequent updates.
+
+**GSD-OpenClaw is for teams** that orchestrate multiple AI agents in parallel and need handoff protocols, wave-based execution, and role-based ownership on top of the GSD methodology.
+
+- ⭐ **[GSD by TÂCHES](https://github.com/gsd-build/get-shit-done)** — The source of concept. Star the original!
+- 🦞 **[OpenClaw](https://openclaw.ai)** — The AI agent platform that makes multi-agent workflows possible.
 
 ---
 
