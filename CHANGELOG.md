@@ -5,6 +5,20 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-03-26
+
+### Added
+- **Credential Security Guide** — Git-leaks integration, pre-commit scanning, config patterns, emergency response
+- **Git Branch Flow Guide** — Protected branches, Conventional Commits, MR workflow, branch naming
+- **QA Standards Guide** — Complete 10-section QA report framework with UI clickthrough, responsive, security testing
+- **Secure Coding Guide** — OWASP Top 10 adapted for AI-generated code with TypeScript examples
+- **Agent Delegation Guide** — Orchestration patterns, wave execution, model assignment strategy, communication templates
+- **Permission Registration Guide** — 4-point pattern ensuring every endpoint is locked down
+- **Docker Deploy Guide** — Compose-first standards, deploy scripts, health checks
+- **Unit Testing Guide** — Coverage requirements, AAA pattern, mocking strategies
+- **Context Management Guide** — Memory architecture, document size limits, preventing context rot
+- **Error Handling Guide** — Retry-before-report, model fallback strategy, user-facing error standards
+
 ## [1.1.0] - 2026-03-26
 
 ### Added
@@ -35,5 +49,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plan verification checklist
 - Integration rules with existing Git, QA, Docker, and permission workflows
 
+[1.2.0]: https://github.com/Chaturaphut/gsd-openclaw/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/Chaturaphut/gsd-openclaw/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/Chaturaphut/gsd-openclaw/releases/tag/v1.0.0

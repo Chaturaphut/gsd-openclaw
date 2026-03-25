@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-12+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-22+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.1.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.2.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -65,6 +65,16 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | 👥 **Role-Based Ownership** | Clear responsibilities: Coordinator, Architect, Dev Pool, QA Pool, UX Pool |
 | 📊 **Context Size Limits** | Prevents context window overflow with document size caps |
 | 🔄 **Upstream Tracking** | Stay current with GSD releases — cherry-pick what matters |
+| 🔑 **Credential Security** | Git-leaks integration, pre-commit scans, `.gitignore` patterns |
+| 🔒 **OWASP Secure Coding** | Input validation, parameterized queries, XSS/injection prevention |
+| 🔐 **Permission Registration** | 4-point pattern: constants → guards → menu → role management UI |
+| 🐳 **Docker Standards** | Compose-first deployment, health checks, deploy scripts |
+| 🧪 **Unit Testing Standards** | Coverage requirements, AAA pattern, mock strategies |
+| 🧠 **Context Management** | Memory architecture, handoff protocol, document size limits |
+| 🚫 **Error Handling** | Retry-before-report, model fallback, user-friendly errors |
+| 📖 **API Documentation** | Every endpoint documented, Swagger integration |
+| 🔀 **Git Branch Flow** | Protected main, Conventional Commits, squash merge |
+| 👥 **Agent Delegation** | Role-based pools, wave orchestration, communication templates |
 
 ---
 
@@ -346,6 +356,25 @@ GSD-OpenClaw is designed for teams with these roles:
 
 ---
 
+## 📚 Documentation
+
+Comprehensive guides for every aspect of multi-agent development:
+
+| Guide | Description |
+|-------|-------------|
+| [🔑 Credential Security](docs/credential-security.md) | Git-leaks integration, pre-commit scans, config patterns — keep secrets out of code |
+| [🔀 Git Branch Flow](docs/git-branch-flow.md) | Protected branches, Conventional Commits, MR workflow for AI agents |
+| [🧪 QA Standards](docs/qa-standards.md) | 10-section QA report, UI clickthrough, responsive testing, security testing |
+| [🔒 Secure Coding](docs/secure-coding.md) | OWASP Top 10 for AI-generated code, input validation, XSS, injection prevention |
+| [👥 Agent Delegation](docs/agent-delegation.md) | Orchestration patterns, wave execution, model assignment, communication templates |
+| [🔐 Permission Registration](docs/permission-registration.md) | 4-point permission pattern — every endpoint locked down from day one |
+| [🐳 Docker Deploy](docs/docker-deploy.md) | Compose-first deployment, health checks, deploy scripts |
+| [🧪 Unit Testing](docs/unit-testing.md) | Coverage requirements, AAA pattern, mocking, naming conventions |
+| [🧠 Context Management](docs/context-management.md) | Document size limits, memory architecture, preventing context rot |
+| [🚫 Error Handling](docs/error-handling.md) | Retry-before-report, user-facing errors, model fallback strategy |
+
+---
+
 ## 🗺️ Roadmap
 
 - [x] Core workflow (Spec → Research → Plan → Execute → QA)
@@ -358,11 +387,19 @@ GSD-OpenClaw is designed for teams with these roles:
 - [x] Workstream Namespacing
 - [x] Post-Mortem Forensics
 - [x] Upstream GSD Tracking (automated weekly)
+- [x] Comprehensive documentation (10 guides)
+- [x] Credential security with git-leaks integration
+- [x] Secure coding standards (OWASP Top 10)
+- [x] Permission registration pattern
+- [x] Agent delegation & orchestration guide
+- [x] Context management for long-running teams
 - [ ] OpenClaw Skill package (auto-install via ClawHub)
 - [ ] Interactive workflow dashboard
 - [ ] Agent performance analytics per workflow
 - [ ] Auto-plan generation from requirements
 - [ ] Integration with GitLab/GitHub Issues
+- [ ] Pre-built CI/CD pipeline templates
+- [ ] Workflow visualization tools
 
 ---
 
