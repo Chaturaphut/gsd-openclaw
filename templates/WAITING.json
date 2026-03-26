@@ -1,0 +1,23 @@
+{
+  "phase": "[current-phase]",
+  "milestone": "[current-milestone]",
+  "status": "waiting",
+  "reason": "Decision required",
+  "options": [
+    {
+      "id": "A",
+      "summary": "Option A summary",
+      "pros": ["Pro 1", "Pro 2"],
+      "cons": ["Con 1", "Con 2"]
+    },
+    {
+      "id": "B",
+      "summary": "Option B summary",
+      "pros": ["Pro 1", "Pro 2"],
+      "cons": ["Con 1", "Con 2"]
+    }
+  ],
+  "blocked_tasks": ["task-1", "task-2"],
+  "requested_by": "[agent-name]",
+  "timestamp": "[ISO-8601-timestamp]"
+}

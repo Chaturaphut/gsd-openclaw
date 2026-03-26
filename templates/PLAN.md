@@ -17,6 +17,7 @@
 - **Files:** `src/api/routes.ts`, `src/services/auth.ts`
 - **Dependencies:** None (Wave 1)
 - **Wave:** 1
+- **Read First:** [Critical info/refs to read before starting this task]
 - **Action:**
   1. Create `src/api/routes.ts` with endpoints: `GET /api/items`, `POST /api/items`
   2. Add request validation using Zod schema
@@ -26,7 +27,10 @@
   - `curl GET /api/items` returns 200 with JSON array
   - `curl POST /api/items` with invalid body returns 400
   - Rate limit triggers after 100 requests
-- **Done When:** Both endpoints return correct responses with validation
+- **Acceptance Criteria:**
+  - [ ] Both endpoints return correct responses with validation
+  - [ ] No stubs or TODOs left in the implementation
+  - [ ] Code passes linting and security scanning
 
 ---
 
