@@ -5,6 +5,17 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-03-26
+
+### Added
+- **Wave Execution Guide** — Patterns for parallel agent orchestration and dependency management
+- **Agent Skill Injection** — Inject project-specific skills into sub-agents via config (cherry-picked from GSD v1.29)
+- **UI-Phase and UI-Review Steps** — Formalized autonomous workflow steps for frontend (from GSD v1.29)
+- **Security Scanning CI** — Automated prompt injection and secret scanning (from GSD v1.29)
+
+### Changed
+- Document version bumped to 1.3
+
 ## [1.2.0] - 2026-03-26
 
 ### Added
