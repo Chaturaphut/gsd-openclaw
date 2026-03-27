@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-57+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-60+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.6.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.7.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -110,6 +110,8 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | 🧹 **Temp File Reaper** | Auto-cleanup of temp/debug files before shipping |
 | 🤖 **GSD SDK** | Headless autonomous execution with blueprints and safety rails |
 | 📝 **SDK Blueprints** | Pre-configured project templates for batch execution |
+| 🌊 **Windsurf Runtime** | Full support for Windsurf (Codeium) agent environment |
+| 🍳 **Feature Recipes** | Step-by-step guides for common full-stack development patterns |
 
 ---
 
@@ -119,7 +121,8 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 gsd-openclaw/
 ├── workflow/
 │   └── gsd-workflow.md         # Core workflow specification
-├── docs/                       # 22 comprehensive guides
+├── docs/                       # 24 comprehensive guides
+├── recipes/                    # Step-by-step feature patterns
 ├── templates/                  # Planning document templates
 ├── ci-templates/               # GitHub Actions & GitLab CI pipelines
 ├── integrations/               # Issue tracker sync (GitHub/GitLab)
@@ -442,10 +445,19 @@ Comprehensive guides for every aspect of multi-agent development:
 | [🔐 Security Hardening](docs/security-hardening.md) | Prompt injection, path traversal, and exfiltration guards |
 | [⚙️ Workflow Settings](docs/workflow-settings.md) | Configure every aspect of GSD behavior |
 | [🤖 GSD SDK](docs/gsd-sdk.md) | Headless autonomous execution with blueprints |
+| [🌊 Windsurf Runtime](docs/windsurf-runtime.md) | Using GSD within the Windsurf (Codeium) environment |
+| [💉 Agent Skill Injection](docs/agent-skill-injection.md) | Inject project-specific skills into sub-agents |
 
 ---
 
 ## 🔧 Tools & Integrations
+
+### Feature Recipes
+Ready-to-use patterns for common tasks:
+```bash
+# Backend-to-Frontend Full Stack Feature
+cat recipes/api-with-frontend.md
+```
 
 ### CI/CD Pipeline Templates
 Pre-built pipelines with GSD-integrated quality gates:

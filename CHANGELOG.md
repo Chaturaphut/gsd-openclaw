@@ -5,6 +5,22 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-03-28
+
+### Added
+
+**Cherry-picked from GSD v1.29:**
+- **Windsurf Runtime Support** — Full installation and command conversion for Windsurf (Codeium) (`docs/windsurf-runtime.md`)
+- **Agent Skill Injection** — Inject project-specific skills into subagents via `agent_skills` config section (`docs/agent-skill-injection.md`)
+
+**New Recipes:**
+- **Full-Stack API Feature Recipe** — Step-by-step guide for backend-to-frontend workflow (`recipes/api-with-frontend.md`)
+
+### Changed
+- Document version bumped to 1.7.0 (Workflow Version 1.7)
+- README updated with new recipes and features
+- Total features now 60+
+
 ## [1.6.0] - 2026-03-27
 
 ### Added
