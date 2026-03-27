@@ -1,0 +1,45 @@
+{
+  "name": "gsd-openclaw",
+  "version": "1.5.0",
+  "description": "Spec-driven development workflow for multi-agent teams. Brings GSD (Get Shit Done) methodology to OpenClaw with wave-based execution, handoff protocols, quality gates, CI/CD templates, and workflow visualization.",
+  "author": "Chaturaphut",
+  "license": "MIT",
+  "repository": "https://github.com/Chaturaphut/gsd-openclaw",
+  "homepage": "https://github.com/Chaturaphut/gsd-openclaw",
+  "tags": [
+    "workflow",
+    "development",
+    "gsd",
+    "multi-agent",
+    "planning",
+    "qa",
+    "ci-cd",
+    "spec-driven",
+    "wave-execution",
+    "handoff",
+    "quality-gates"
+  ],
+  "keywords": [
+    "spec-driven development",
+    "multi-agent workflow",
+    "GSD methodology",
+    "wave-based execution",
+    "agent orchestration",
+    "quality gates",
+    "regression testing",
+    "stub detection"
+  ],
+  "category": "development",
+  "requires": [],
+  "files": {
+    "workflow": "workflow/gsd-workflow.md",
+    "skill": "skill/SKILL.md",
+    "docs": "docs/",
+    "templates": "templates/",
+    "tools": "tools/",
+    "ci-templates": "ci-templates/",
+    "integrations": "integrations/",
+    "dashboard": "dashboard/"
+  },
+  "postInstall": "skill/install.sh"
+}
