@@ -1,0 +1,92 @@
+{
+  "$schema": "GSD Agent Performance Metrics v1.0",
+  "generated": "",
+  "project": "",
+  "period": {
+    "start": "",
+    "end": ""
+  },
+  "summary": {
+    "total_phases": 0,
+    "completed_phases": 0,
+    "total_tasks": 0,
+    "completed_tasks": 0,
+    "total_waves": 0,
+    "qa_pass_rate": 0.0,
+    "avg_rework_cycles": 0.0,
+    "total_regressions": 0,
+    "blockers_encountered": 0
+  },
+  "phases": [
+    {
+      "name": "",
+      "status": "pending|in-progress|complete|blocked",
+      "started_at": "",
+      "completed_at": "",
+      "duration_hours": 0,
+      "tasks": {
+        "total": 0,
+        "completed": 0,
+        "blocked": 0
+      },
+      "waves": {
+        "total": 0,
+        "current": 0
+      },
+      "qa": {
+        "passed": false,
+        "pass_rate": 0.0,
+        "issues_found": 0,
+        "rework_cycles": 0,
+        "regression_failures": 0
+      },
+      "agents": [
+        {
+          "role": "developer|qa|architect|coordinator",
+          "session_id": "",
+          "tasks_assigned": 0,
+          "tasks_completed": 0,
+          "issues_found_by_qa": 0,
+          "rework_count": 0,
+          "handoff_quality": "clean|minor-issues|major-issues"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "",
+          "summary": "",
+          "impact": "low|medium|high"
+        }
+      ],
+      "blockers": [
+        {
+          "description": "",
+          "resolved": false,
+          "resolution_time_hours": 0
+        }
+      ]
+    }
+  ],
+  "agent_performance": [
+    {
+      "agent_id": "",
+      "role": "",
+      "metrics": {
+        "tasks_completed": 0,
+        "avg_task_time_hours": 0,
+        "qa_pass_rate": 0.0,
+        "rework_cycles": 0,
+        "stubs_left": 0,
+        "regressions_caused": 0,
+        "handoff_completeness": 0.0
+      }
+    }
+  ],
+  "workflow_health": {
+    "plan_coverage": 0.0,
+    "stub_count": 0,
+    "open_blockers": 0,
+    "context_size_violations": 0,
+    "handoff_quality_avg": 0.0
+  }
+}
