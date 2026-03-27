@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-30+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-37+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.4.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.5.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -84,12 +84,35 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | ⏳ **Decision Waiting Signal** | `WAITING.json` machine-readable signal for decision points |
 | 🌱 **Plant Seed / Persistent Threads** | Backlog and context thread persistence in `.planning/seeds/` |
 | 📝 **Enhanced Templates** | Ready-to-use templates: CONTEXT, MILESTONE-SUMMARY, WAITING, PLAN with acceptance criteria |
+| 🔧 **CI/CD Pipeline Templates** | Pre-built GitHub Actions & GitLab CI with GSD-integrated stages |
+| 🔗 **Issue Tracker Integration** | Auto-create/link/close GitHub & GitLab issues from .planning/ |
+| 📐 **Auto-Plan Generation** | Generate draft PLAN.md from REQUIREMENTS.md + RESEARCH.md |
+| 📊 **Agent Performance Analytics** | Track QA pass rate, rework cycles, regressions per workflow |
+| 🎨 **Workflow Visualization** | Mermaid diagrams + terminal dashboard for workflow state |
+| 💻 **Interactive Dashboard** | Single-file HTML dashboard — no build required, dark theme |
+| 📦 **OpenClaw Skill Package** | Auto-install via ClawHub with post-install setup |
 
 ---
 
 ## 📁 Project Structure
 
 ```
+gsd-openclaw/
+├── workflow/
+│   └── gsd-workflow.md         # Core workflow specification
+├── docs/                       # 11 comprehensive guides
+├── templates/                  # Planning document templates
+├── ci-templates/               # GitHub Actions & GitLab CI pipelines
+├── integrations/               # Issue tracker sync (GitHub/GitLab)
+├── tools/
+│   ├── auto-plan/              # Plan generation from requirements
+│   ├── analytics/              # Agent performance metrics
+│   └── visualize/              # Mermaid diagrams & terminal dashboard
+├── dashboard/                  # Interactive web dashboard
+├── skill/                      # OpenClaw Skill package for ClawHub
+├── examples/                   # Example configurations
+└── scripts/                    # Utility scripts
+
 your-project/
 └── .planning/
     ├── PROJECT.md              # Vision, scope, tech stack
@@ -386,6 +409,63 @@ Comprehensive guides for every aspect of multi-agent development:
 
 ---
 
+## 🔧 Tools & Integrations
+
+### CI/CD Pipeline Templates
+Pre-built pipelines with GSD-integrated quality gates:
+```bash
+# GitHub Actions
+cp ci-templates/github-actions.yml .github/workflows/gsd-ci.yml
+
+# GitLab CI
+cp ci-templates/gitlab-ci.yml .gitlab-ci.yml
+```
+
+### Issue Tracker Sync
+```bash
+# Create issues from requirements
+./integrations/sync-script.sh create-issues
+
+# Close issues on QA pass
+./integrations/sync-script.sh close-passed
+```
+
+### Auto-Plan Generation
+```bash
+# Generate draft PLAN.md
+./tools/auto-plan/generate-plan.sh
+
+# Get AI prompt for manual use
+./tools/auto-plan/generate-plan.sh --prompt-only
+```
+
+### Performance Analytics
+```bash
+# Terminal report
+./tools/analytics/collect-metrics.sh
+
+# JSON for dashboard
+./tools/analytics/collect-metrics.sh --format json --output metrics.json
+```
+
+### Visualization
+```bash
+# Terminal dashboard
+./tools/visualize/workflow-status.sh --watch
+
+# Mermaid diagrams
+./tools/visualize/generate-mermaid.sh all --output diagrams.md
+```
+
+### Interactive Dashboard
+```bash
+# Export data and open dashboard
+./dashboard/export-data.sh
+open dashboard/index.html
+```
+
+---
+
 ## 🗺️ Roadmap
 
 - [x] Core workflow (Spec → Research → Plan → Execute → QA)
@@ -413,13 +493,21 @@ Comprehensive guides for every aspect of multi-agent development:
 - [x] Decision Waiting Signal (`WAITING.json`)
 - [x] Plant Seed / Persistent Threads for backlog management
 - [x] Enhanced templates (CONTEXT, MILESTONE-SUMMARY, WAITING)
-- [ ] OpenClaw Skill package (auto-install via ClawHub)
-- [ ] Interactive workflow dashboard
-- [ ] Agent performance analytics per workflow
-- [ ] Auto-plan generation from requirements
-- [ ] Integration with GitLab/GitHub Issues
-- [ ] Pre-built CI/CD pipeline templates
-- [ ] Workflow visualization tools
+- [x] Pre-built CI/CD pipeline templates (GitHub Actions + GitLab CI)
+- [x] Integration with GitLab/GitHub Issues (auto-create, link, close)
+- [x] Auto-plan generation from requirements
+- [x] Agent performance analytics per workflow
+- [x] Workflow visualization tools (Mermaid + terminal dashboard)
+- [x] Interactive workflow dashboard (single-file HTML)
+- [x] OpenClaw Skill package (auto-install via ClawHub)
+
+### 🔮 Future
+- [ ] Real-time agent monitoring via WebSocket
+- [ ] Multi-project portfolio dashboard
+- [ ] AI-powered plan quality scoring
+- [ ] Slack/Discord notifications for workflow events
+- [ ] Historical analytics and trend tracking
+- [ ] Custom workflow stage plugins
 
 ---
 

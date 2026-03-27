@@ -5,6 +5,21 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-03-27
+
+### Added
+- **Pre-built CI/CD Pipeline Templates** — GitHub Actions and GitLab CI workflows with GSD-integrated stages: lint, test, plan verification, stub detection, security scan, regression gate (`ci-templates/`)
+- **GitHub/GitLab Issue Integration** — Auto-create issues from REQUIREMENTS.md, link to PLAN.md tasks, auto-close on QA pass, universal sync script with platform auto-detection (`integrations/`)
+- **Auto-Plan Generation** — Script and AI prompt template to generate draft PLAN.md from REQUIREMENTS.md and RESEARCH.md, with validation checklist (`tools/auto-plan/`)
+- **Agent Performance Analytics** — Metrics collector analyzing .planning/ artifacts for phase completion, QA pass rate, rework cycles, regressions, handoff quality; outputs text/markdown/JSON (`tools/analytics/`)
+- **Workflow Visualization Tools** — Mermaid diagram generator (flowchart, gantt, state, wave) and terminal dashboard with progress bars, watch mode (`tools/visualize/`)
+- **Interactive Workflow Dashboard** — Single-file HTML dashboard (no build required) with dark theme, responsive design, data import via file/paste/sample (`dashboard/`)
+- **OpenClaw Skill Package** — AgentSkill definition for ClawHub auto-install with post-install script (`skill/`)
+
+### Changed
+- Document version bumped to 1.5.0
+- All 7 roadmap items completed
+
 ## [1.4.0] - 2026-03-27
 
 ### Added
