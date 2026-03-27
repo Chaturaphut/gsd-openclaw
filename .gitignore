@@ -16,3 +16,4 @@ Thumbs.db
 # Node (if scripts added later)
 node_modules/
 dist/
+# test
