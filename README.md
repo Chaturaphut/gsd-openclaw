@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-22+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-30+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.2.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.4.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -75,6 +75,15 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | 📖 **API Documentation** | Every endpoint documented, Swagger integration |
 | 🔀 **Git Branch Flow** | Protected main, Conventional Commits, squash merge |
 | 👥 **Agent Delegation** | Role-based pools, wave orchestration, communication templates |
+| 🌊 **Wave Execution Guide** | Patterns for parallel agent orchestration and dependency management |
+| 💉 **Agent Skill Injection** | Inject project-specific skills into sub-agents via config |
+| 🎨 **UI-Phase & UI-Review** | Formalized autonomous workflow steps for frontend development |
+| 🛡️ **Security Scanning CI** | Automated prompt injection and secret scanning in CI pipeline |
+| 🧭 **Advisor Mode** | Lightweight parallel agent analysis for gray areas before decisions |
+| 📋 **Milestone Summary** | Post-build onboarding and feature summaries for completed milestones |
+| ⏳ **Decision Waiting Signal** | `WAITING.json` machine-readable signal for decision points |
+| 🌱 **Plant Seed / Persistent Threads** | Backlog and context thread persistence in `.planning/seeds/` |
+| 📝 **Enhanced Templates** | Ready-to-use templates: CONTEXT, MILESTONE-SUMMARY, WAITING, PLAN with acceptance criteria |
 
 ---
 
@@ -103,7 +112,8 @@ your-project/
     ├── workstreams/            # Parallel milestone work
     ├── research/               # Domain research cache
     ├── quick/                  # Ad-hoc task plans
-    └── threads/                # Cross-session context
+    ├── threads/                # Cross-session context
+    └── seeds/                  # Backlog items & persistent context threads
 ```
 
 ---
@@ -372,6 +382,7 @@ Comprehensive guides for every aspect of multi-agent development:
 | [🧪 Unit Testing](docs/unit-testing.md) | Coverage requirements, AAA pattern, mocking, naming conventions |
 | [🧠 Context Management](docs/context-management.md) | Document size limits, memory architecture, preventing context rot |
 | [🚫 Error Handling](docs/error-handling.md) | Retry-before-report, user-facing errors, model fallback strategy |
+| [🌊 Wave Execution](docs/wave-execution-guide.md) | Parallel agent orchestration patterns, dependency management, wave sizing |
 
 ---
 
@@ -393,6 +404,15 @@ Comprehensive guides for every aspect of multi-agent development:
 - [x] Permission registration pattern
 - [x] Agent delegation & orchestration guide
 - [x] Context management for long-running teams
+- [x] Wave execution guide with orchestration patterns
+- [x] Agent skill injection for sub-agents
+- [x] UI-Phase and UI-Review workflow steps
+- [x] Security scanning CI (prompt injection + secret scanning)
+- [x] Advisor Mode for parallel analysis before decisions
+- [x] Milestone Summary for post-build onboarding
+- [x] Decision Waiting Signal (`WAITING.json`)
+- [x] Plant Seed / Persistent Threads for backlog management
+- [x] Enhanced templates (CONTEXT, MILESTONE-SUMMARY, WAITING)
 - [ ] OpenClaw Skill package (auto-install via ClawHub)
 - [ ] Interactive workflow dashboard
 - [ ] Agent performance analytics per workflow
