@@ -5,6 +5,44 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-03-27
+
+### Added
+
+**Cherry-picked from GSD v1.26:**
+- **Agent Performance Profiling** — Per-agent metrics tracking (first-pass rate, rework cycles, stub rate) for smarter delegation decisions (`docs/agent-profiling.md`, `templates/AGENT-PROFILE.json`)
+- **Ship Workflow (`/gsd:ship`)** — Standardized PR/MR creation workflow with auto-generated descriptions from `.planning/` artifacts (`docs/ship-workflow.md`)
+- **Auto Workflow Advancement (`/gsd:next`)** — State machine that inspects `.planning/` state and auto-advances to the next logical stage (`docs/auto-advance.md`)
+- **Interactive Executor Mode** — Pair-programming pattern where agents pause for human review at each task (`docs/interactive-executor.md`)
+- **MCP Tool Awareness** — Guide for discovering and using MCP tools in GSD workflows (`docs/mcp-tool-awareness.md`)
+- **Execution Hardening** — Pre-wave dependency checks, cross-plan data contracts, schema consistency verification (`docs/execution-hardening.md`)
+
+**Cherry-picked from GSD v1.27:**
+- **Multi-Repo Workspace** — Manage multiple GSD projects from a single workspace with cross-project dependencies and portfolio management (`docs/multi-repo-workspace.md`)
+- **Fast Inline Task Mode (`/gsd:fast`)** — Skip planning entirely for trivial single-file changes ≤20 lines (`docs/fast-mode.md`)
+- **Cross-AI Peer Review (`/gsd:review`)** — Spawn a different model to review code before QA, with REVIEW.md template (`docs/peer-review.md`, `templates/REVIEW.md`)
+- **Clean PR Branch Creation (`/gsd:pr-branch`)** — Create clean branches for PRs with squashed commits and no artifacts (`docs/pr-branch-workflow.md`)
+- **Verification Debt Tracking (`/gsd:audit-uat`)** — Track untested features and verification gaps with debt scoring and shipping gates (`docs/verification-debt.md`, `templates/VERIFICATION-DEBT.md`, `tools/audit-uat/`)
+- **Discussion Audit Trail** — DISCUSSION-LOG.md template for recording all decisions with context and rationale (`templates/DISCUSSION-LOG.md`)
+- **Context Window Optimization** — Strategies for staying within optimal context usage: progressive summarization, scope narrowing, context rotation (`docs/context-window-optimization.md`)
+- **Security Hardening** — Prompt injection guards, path traversal prevention, input validation, data exfiltration prevention for AI workflows (`docs/security-hardening.md`)
+
+**Cherry-picked from GSD v1.28:**
+- **Multi-Project Workspace Commands** — Portfolio management, cross-project dependencies, shared contracts (merged into `docs/multi-repo-workspace.md`)
+- **Workflow Configuration Settings** — `skip_discuss`, `discuss_mode`, `autoAdvance`, `executionMode`, UI-phase auto-detection, and all config.json options documented (`docs/workflow-settings.md`)
+- **UI-Phase Auto-Recommendation** — Auto-detect frontend tasks and recommend UI-Phase/UI-Review workflow steps
+- **Data-Flow Tracing** — Trace data through the system during verification to catch integration issues
+- **Environment Audit** — Verify required environment variables exist during QA
+- **Temp File Reaper** — Automated cleanup of temp/debug files before shipping (`tools/temp-reaper/`)
+
+**Cherry-picked from GSD v1.30:**
+- **GSD SDK — Headless Autonomous Execution** — Pre-configured end-to-end workflow execution with blueprints, safety rails, and batch support (`docs/gsd-sdk.md`, `templates/SDK-BLUEPRINT.json`)
+
+### Changed
+- Document version bumped to 1.6.0
+- README updated with 20 new features, expanded roadmap, and new tools section
+- Total features now 57+
+
 ## [1.5.0] - 2026-03-27
 
 ### Added
@@ -88,6 +126,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plan verification checklist
 - Integration rules with existing Git, QA, Docker, and permission workflows
 
+[1.6.0]: https://github.com/Chaturaphut/gsd-openclaw/compare/v1.5.0...v1.6.0
+[1.5.0]: https://github.com/Chaturaphut/gsd-openclaw/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/Chaturaphut/gsd-openclaw/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/Chaturaphut/gsd-openclaw/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/Chaturaphut/gsd-openclaw/compare/v1.1.0...v1.2.0

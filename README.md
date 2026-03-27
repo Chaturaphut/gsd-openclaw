@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-37+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-57+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.5.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.6.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -91,6 +91,25 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | 🎨 **Workflow Visualization** | Mermaid diagrams + terminal dashboard for workflow state |
 | 💻 **Interactive Dashboard** | Single-file HTML dashboard — no build required, dark theme |
 | 📦 **OpenClaw Skill Package** | Auto-install via ClawHub with post-install setup |
+| 📊 **Agent Performance Profiling** | Per-agent metrics tracking for smarter delegation |
+| 🚀 **Ship Workflow** | Standardized PR/MR creation with auto-generated descriptions |
+| ⏩ **Auto Advance** | State machine that auto-progresses through workflow stages |
+| 🤝 **Interactive Executor** | Pair-programming mode with human review at each task |
+| 🔧 **MCP Tool Awareness** | Discover and use MCP tools in GSD workflows |
+| 🛡️ **Execution Hardening** | Pre-wave dependency checks and cross-plan data contracts |
+| 🏢 **Multi-Repo Workspace** | Manage multiple GSD projects with cross-project dependencies |
+| ⚡ **Fast Inline Mode** | Skip planning for trivial single-file changes |
+| 🔍 **Cross-AI Peer Review** | Different model reviews code before QA |
+| 🌿 **Clean PR Branch** | Create clean branches with squashed commits |
+| 📋 **Verification Debt** | Track untested features with debt scoring |
+| 💬 **Discussion Audit Trail** | Decision log template for full traceability |
+| 🧠 **Context Window Optimization** | Strategies to maximize quality within context limits |
+| 🔐 **Security Hardening** | Prompt injection, path traversal, and exfiltration guards |
+| ⚙️ **Workflow Configuration** | Fine-tune every aspect of GSD behavior via config.json |
+| 🔄 **Data-Flow Tracing** | Trace data through the system during verification |
+| 🧹 **Temp File Reaper** | Auto-cleanup of temp/debug files before shipping |
+| 🤖 **GSD SDK** | Headless autonomous execution with blueprints and safety rails |
+| 📝 **SDK Blueprints** | Pre-configured project templates for batch execution |
 
 ---
 
@@ -100,13 +119,15 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 gsd-openclaw/
 ├── workflow/
 │   └── gsd-workflow.md         # Core workflow specification
-├── docs/                       # 11 comprehensive guides
+├── docs/                       # 22 comprehensive guides
 ├── templates/                  # Planning document templates
 ├── ci-templates/               # GitHub Actions & GitLab CI pipelines
 ├── integrations/               # Issue tracker sync (GitHub/GitLab)
 ├── tools/
 │   ├── auto-plan/              # Plan generation from requirements
 │   ├── analytics/              # Agent performance metrics
+│   ├── audit-uat/              # Verification debt auditor
+│   ├── temp-reaper/            # Temp file cleanup
 │   └── visualize/              # Mermaid diagrams & terminal dashboard
 ├── dashboard/                  # Interactive web dashboard
 ├── skill/                      # OpenClaw Skill package for ClawHub
@@ -406,6 +427,21 @@ Comprehensive guides for every aspect of multi-agent development:
 | [🧠 Context Management](docs/context-management.md) | Document size limits, memory architecture, preventing context rot |
 | [🚫 Error Handling](docs/error-handling.md) | Retry-before-report, user-facing errors, model fallback strategy |
 | [🌊 Wave Execution](docs/wave-execution-guide.md) | Parallel agent orchestration patterns, dependency management, wave sizing |
+| [📊 Agent Profiling](docs/agent-profiling.md) | Per-agent performance tracking for smarter delegation decisions |
+| [🚀 Ship Workflow](docs/ship-workflow.md) | Standardized PR/MR creation with auto-generated descriptions |
+| [⏩ Auto Advance](docs/auto-advance.md) | State machine for automatic workflow stage progression |
+| [🤝 Interactive Executor](docs/interactive-executor.md) | Pair-programming mode with human review at each step |
+| [🔧 MCP Tool Awareness](docs/mcp-tool-awareness.md) | Discover and leverage MCP tools in GSD workflows |
+| [🛡️ Execution Hardening](docs/execution-hardening.md) | Pre-wave dependency checks and cross-plan data contracts |
+| [🏢 Multi-Repo Workspace](docs/multi-repo-workspace.md) | Manage multiple GSD projects with portfolio coordination |
+| [⚡ Fast Mode](docs/fast-mode.md) | Skip planning for trivial single-file changes |
+| [🔍 Peer Review](docs/peer-review.md) | Cross-AI code review using different models |
+| [🌿 PR Branch](docs/pr-branch-workflow.md) | Clean PR branch creation with squashed commits |
+| [📋 Verification Debt](docs/verification-debt.md) | Track untested features and verification gaps |
+| [🧠 Context Optimization](docs/context-window-optimization.md) | Maximize quality within finite context windows |
+| [🔐 Security Hardening](docs/security-hardening.md) | Prompt injection, path traversal, and exfiltration guards |
+| [⚙️ Workflow Settings](docs/workflow-settings.md) | Configure every aspect of GSD behavior |
+| [🤖 GSD SDK](docs/gsd-sdk.md) | Headless autonomous execution with blueprints |
 
 ---
 
@@ -464,6 +500,24 @@ cp ci-templates/gitlab-ci.yml .gitlab-ci.yml
 open dashboard/index.html
 ```
 
+### Verification Debt Audit
+```bash
+# Audit test coverage and verification debt
+./tools/audit-uat/audit-verification.sh /path/to/project
+
+# Save report
+./tools/audit-uat/audit-verification.sh . > VERIFICATION-DEBT.md
+```
+
+### Temp File Reaper
+```bash
+# Preview cleanup (dry run)
+./tools/temp-reaper/reap.sh . --dry-run
+
+# Clean up temp/debug files before shipping
+./tools/temp-reaper/reap.sh .
+```
+
 ---
 
 ## 🗺️ Roadmap
@@ -501,6 +555,26 @@ open dashboard/index.html
 - [x] Interactive workflow dashboard (single-file HTML)
 - [x] OpenClaw Skill package (auto-install via ClawHub)
 
+- [x] Agent Performance Profiling for smarter delegation
+- [x] Ship Workflow (`/gsd:ship`) for standardized PR creation
+- [x] Auto Advance (`/gsd:next`) for automatic stage progression
+- [x] Interactive Executor Mode for pair-programming
+- [x] MCP Tool Awareness for tool discovery in workflows
+- [x] Execution Hardening with pre-wave checks and data contracts
+- [x] Multi-Repo Workspace for cross-project coordination
+- [x] Fast Inline Mode (`/gsd:fast`) for trivial changes
+- [x] Cross-AI Peer Review (`/gsd:review`) with different models
+- [x] Clean PR Branch Creation (`/gsd:pr-branch`)
+- [x] Verification Debt Tracking (`/gsd:audit-uat`)
+- [x] Discussion Audit Trail (DISCUSSION-LOG.md)
+- [x] Context Window Optimization strategies
+- [x] Security Hardening (prompt injection, path traversal, exfiltration)
+- [x] Workflow Configuration Settings (config.json)
+- [x] UI-Phase Auto-Recommendation
+- [x] Data-Flow Tracing and Environment Audit
+- [x] Temp File Reaper tool
+- [x] GSD SDK for headless autonomous execution with blueprints
+
 ### 🔮 Future
 - [ ] Real-time agent monitoring via WebSocket
 - [ ] Multi-project portfolio dashboard
@@ -508,6 +582,8 @@ open dashboard/index.html
 - [ ] Slack/Discord notifications for workflow events
 - [ ] Historical analytics and trend tracking
 - [ ] Custom workflow stage plugins
+- [ ] Blueprint marketplace for SDK templates
+- [ ] Cross-project dependency visualization
 
 ---
 
