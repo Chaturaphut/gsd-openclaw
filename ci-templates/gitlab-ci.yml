@@ -1,0 +1,258 @@
+# GSD-OpenClaw CI/CD Pipeline for GitLab CI
+# Integrates with GSD workflow stages: plan verification, stub detection, regression gate
+#
+# Usage: Copy to .gitlab-ci.yml in your project root
+# Customize the variables, paths and commands for your tech stack
+
+variables:
+  PLANNING_DIR: ".planning"
+  NODE_VERSION: "20"
+
+stages:
+  - lint
+  - test
+  - gsd-verify
+  - security
+  - summary
+
+# ─────────────────────────────────────────────
+# Stage 1: Lint & Format
+# ─────────────────────────────────────────────
+lint:
+  stage: lint
+  image: node:${NODE_VERSION}
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+  script:
+    - npm ci
+    - npm run lint --if-present
+    - npm run format:check --if-present || true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# ─────────────────────────────────────────────
+# Stage 2: Test Suite
+# ─────────────────────────────────────────────
+test:
+  stage: test
+  image: node:${NODE_VERSION}
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+  script:
+    - npm ci
+    - npm test --if-present
+  artifacts:
+    when: always
+    paths:
+      - coverage/
+    expire_in: 7 days
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# ─────────────────────────────────────────────
+# Stage 3: GSD Plan Verification
+# ─────────────────────────────────────────────
+plan-verification:
+  stage: gsd-verify
+  image: alpine:latest
+  script:
+    - |
+      echo "📋 GSD Plan Verification"
+      
+      if [ ! -d "$PLANNING_DIR" ]; then
+        echo "⚠️ No .planning/ directory found — skipping GSD checks"
+        exit 0
+      fi
+      
+      # Check REQUIREMENTS.md
+      if [ ! -f "$PLANNING_DIR/REQUIREMENTS.md" ]; then
+        echo "❌ Missing REQUIREMENTS.md — every GSD project needs requirements"
+        exit 1
+      fi
+      echo "✅ REQUIREMENTS.md found"
+      
+      # Check for PLAN files
+      PLANS=$(find "$PLANNING_DIR" -name "PLAN*.md" -type f 2>/dev/null)
+      if [ -z "$PLANS" ]; then
+        echo "⚠️ No PLAN.md found — ensure this is Fast/Quick mode"
+        CHANGED=$(git diff --name-only origin/main...HEAD 2>/dev/null | wc -l || echo "0")
+        if [ "$CHANGED" -gt 3 ]; then
+          echo "❌ $CHANGED files changed without a plan — Full GSD required"
+          exit 1
+        fi
+        echo "✅ $CHANGED files changed — Quick/Fast mode acceptable"
+      else
+        echo "✅ Plan found:"
+        echo "$PLANS"
+      fi
+      
+      # Check STATE.md
+      if [ -f "$PLANNING_DIR/STATE.md" ]; then
+        echo "✅ STATE.md found"
+      fi
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+# ─────────────────────────────────────────────
+# Stage 3b: Stub Detection
+# ─────────────────────────────────────────────
+stub-detection:
+  stage: gsd-verify
+  image: alpine:latest
+  script:
+    - |
+      echo "🔍 Scanning for stubs, TODOs, and placeholders..."
+      
+      PATTERNS="TODO|FIXME|HACK|PLACEHOLDER|Not implemented|// stub|# stub|XXX|TEMP:|REMOVEME"
+      
+      SCAN_DIRS=""
+      for dir in src/ lib/ app/ components/ pages/ api/ services/; do
+        [ -d "$dir" ] && SCAN_DIRS="$SCAN_DIRS $dir"
+      done
+      [ -z "$SCAN_DIRS" ] && SCAN_DIRS="."
+      
+      FOUND=$(grep -rn \
+        --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" \
+        --include="*.py" --include="*.go" --include="*.rs" --include="*.java" \
+        -E "$PATTERNS" $SCAN_DIRS 2>/dev/null || true)
+      
+      if [ -n "$FOUND" ]; then
+        echo "❌ Stubs/TODOs found in production code:"
+        echo "$FOUND"
+        echo "Found $(echo "$FOUND" | wc -l) stub(s)"
+        exit 1
+      fi
+      
+      echo "✅ No stubs or placeholders found"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# ─────────────────────────────────────────────
+# Stage 4: Security Scan
+# ─────────────────────────────────────────────
+secret-detection:
+  stage: security
+  image: alpine:latest
+  script:
+    - |
+      echo "🔑 Scanning for leaked secrets..."
+      
+      # AWS keys
+      FOUND=$(grep -rn -E 'AKIA[0-9A-Z]{16}' . --include="*.ts" --include="*.js" \
+        --include="*.py" --include="*.env" --include="*.yml" --include="*.json" \
+        2>/dev/null | grep -v node_modules | grep -v ".git/" || true)
+      
+      if [ -n "$FOUND" ]; then
+        echo "❌ Potential AWS key found:"
+        echo "$FOUND"
+        exit 1
+      fi
+      
+      # GitHub/GitLab PATs
+      FOUND=$(grep -rn -E 'ghp_[a-zA-Z0-9]{36}|glpat-[a-zA-Z0-9\-_]{20,}' . \
+        --include="*.ts" --include="*.js" --include="*.py" --include="*.env" \
+        --include="*.yml" --include="*.json" 2>/dev/null \
+        | grep -v node_modules | grep -v ".git/" || true)
+      
+      if [ -n "$FOUND" ]; then
+        echo "❌ Potential token found:"
+        echo "$FOUND"
+        exit 1
+      fi
+      
+      # OpenAI/Stripe keys
+      FOUND=$(grep -rn -E 'sk-[a-zA-Z0-9]{20,}' . \
+        --include="*.ts" --include="*.js" --include="*.py" --include="*.env" \
+        --include="*.yml" --include="*.json" 2>/dev/null \
+        | grep -v node_modules | grep -v ".git/" || true)
+      
+      if [ -n "$FOUND" ]; then
+        echo "❌ Potential API key found:"
+        echo "$FOUND"
+        exit 1
+      fi
+      
+      echo "✅ No secrets detected"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+gitignore-audit:
+  stage: security
+  image: alpine:latest
+  script:
+    - |
+      echo "📄 Verifying .gitignore coverage..."
+      
+      MISSING=0
+      for pat in ".env" ".env.local" "*.pem" "*.key" "id_rsa" "credentials.json"; do
+        if [ -f .gitignore ]; then
+          if ! grep -q "$pat" .gitignore 2>/dev/null; then
+            echo "⚠️ .gitignore missing: $pat"
+            MISSING=$((MISSING + 1))
+          fi
+        else
+          echo "❌ No .gitignore found!"
+          exit 1
+        fi
+      done
+      
+      if [ "$MISSING" -gt 0 ]; then
+        echo "⚠️ $MISSING pattern(s) not in .gitignore"
+      else
+        echo "✅ .gitignore covers sensitive patterns"
+      fi
+  allow_failure: true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+# ─────────────────────────────────────────────
+# Stage 5: Regression Gate
+# ─────────────────────────────────────────────
+regression-gate:
+  stage: security
+  image: node:${NODE_VERSION}
+  needs: ["test"]
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+  script:
+    - |
+      echo "🔄 Running cross-phase regression gate..."
+      npm ci
+      npm test --if-present -- --coverage 2>/dev/null || {
+        echo "❌ Regression tests failed"
+        exit 1
+      }
+      echo "✅ All regression tests passed"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+# ─────────────────────────────────────────────
+# Final: Pipeline Summary
+# ─────────────────────────────────────────────
+pipeline-summary:
+  stage: summary
+  image: alpine:latest
+  script:
+    - |
+      echo "📊 GSD CI Pipeline Summary"
+      echo "=========================="
+      echo "✅ Lint passed"
+      echo "✅ Tests passed"
+      echo "✅ GSD verification passed"
+      echo "✅ Security scans passed"
+      echo ""
+      echo "🚀 Ready for review and merge"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'

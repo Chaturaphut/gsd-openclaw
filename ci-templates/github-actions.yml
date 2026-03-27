@@ -1,0 +1,311 @@
+# GSD-OpenClaw CI/CD Pipeline for GitHub Actions
+# Integrates with GSD workflow stages: plan verification, stub detection, regression gate
+#
+# Usage: Copy to .github/workflows/gsd-ci.yml in your project
+# Customize the paths and commands for your tech stack
+
+name: GSD CI Pipeline
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+env:
+  PLANNING_DIR: .planning
+  NODE_VERSION: '20'
+
+jobs:
+  # ─────────────────────────────────────────────
+  # Stage 1: Lint & Format
+  # ─────────────────────────────────────────────
+  lint:
+    name: 🔍 Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint --if-present
+
+      - name: Check formatting
+        run: npm run format:check --if-present || true
+
+  # ─────────────────────────────────────────────
+  # Stage 2: Test Suite
+  # ─────────────────────────────────────────────
+  test:
+    name: 🧪 Test Suite
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test --if-present
+
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 7
+
+  # ─────────────────────────────────────────────
+  # Stage 3: GSD Plan Verification
+  # ─────────────────────────────────────────────
+  plan-verification:
+    name: 📋 GSD Plan Verification
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check planning directory exists
+        run: |
+          if [ ! -d "${{ env.PLANNING_DIR }}" ]; then
+            echo "⚠️ No .planning/ directory found — skipping GSD checks"
+            echo "SKIP_GSD=true" >> $GITHUB_ENV
+          fi
+
+      - name: Verify REQUIREMENTS.md exists
+        if: env.SKIP_GSD != 'true'
+        run: |
+          if [ ! -f "${{ env.PLANNING_DIR }}/REQUIREMENTS.md" ]; then
+            echo "❌ Missing REQUIREMENTS.md — every GSD project needs requirements"
+            exit 1
+          fi
+          echo "✅ REQUIREMENTS.md found"
+
+      - name: Verify PLAN exists for Full GSD
+        if: env.SKIP_GSD != 'true'
+        run: |
+          # Check for any PLAN file in phases
+          PLANS=$(find "${{ env.PLANNING_DIR }}" -name "PLAN*.md" -type f 2>/dev/null)
+          if [ -z "$PLANS" ]; then
+            echo "⚠️ No PLAN.md found — ensure this is Fast/Quick mode (≤3 files changed)"
+            # Count changed files to validate task sizing
+            CHANGED=$(git diff --name-only origin/main...HEAD | wc -l)
+            if [ "$CHANGED" -gt 3 ]; then
+              echo "❌ $CHANGED files changed without a plan — Full GSD required for >3 files"
+              exit 1
+            fi
+            echo "✅ $CHANGED files changed — Quick/Fast mode acceptable"
+          else
+            echo "✅ Plan found:"
+            echo "$PLANS"
+          fi
+
+      - name: Verify STATE.md is current
+        if: env.SKIP_GSD != 'true'
+        run: |
+          if [ -f "${{ env.PLANNING_DIR }}/STATE.md" ]; then
+            echo "✅ STATE.md found"
+            head -20 "${{ env.PLANNING_DIR }}/STATE.md"
+          fi
+
+  # ─────────────────────────────────────────────
+  # Stage 4: Stub Detection
+  # ─────────────────────────────────────────────
+  stub-detection:
+    name: 🔍 Stub Detection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan for stubs in source code
+        run: |
+          echo "🔍 Scanning for stubs, TODOs, and placeholders in source code..."
+          
+          # Define patterns to detect
+          PATTERNS="TODO|FIXME|HACK|PLACEHOLDER|Not implemented|// stub|# stub|XXX|TEMP:|REMOVEME"
+          
+          # Define directories to scan (customize for your project)
+          SCAN_DIRS="src/ lib/ app/ components/ pages/ api/ services/"
+          
+          # Build find command for existing directories only
+          EXISTING_DIRS=""
+          for dir in $SCAN_DIRS; do
+            [ -d "$dir" ] && EXISTING_DIRS="$EXISTING_DIRS $dir"
+          done
+          
+          if [ -z "$EXISTING_DIRS" ]; then
+            echo "⚠️ No standard source directories found — scanning all non-hidden files"
+            EXISTING_DIRS="."
+          fi
+          
+          # Scan and report
+          FOUND=$(grep -rn --include="*.ts" --include="*.tsx" --include="*.js" \
+            --include="*.jsx" --include="*.py" --include="*.go" --include="*.rs" \
+            --include="*.java" --include="*.rb" --include="*.php" \
+            -E "$PATTERNS" $EXISTING_DIRS 2>/dev/null || true)
+          
+          if [ -n "$FOUND" ]; then
+            echo "❌ Stubs/TODOs found in production code:"
+            echo "$FOUND"
+            echo ""
+            echo "Found $(echo "$FOUND" | wc -l) stub(s) — fix before merging"
+            exit 1
+          fi
+          
+          echo "✅ No stubs or placeholders found in source code"
+
+  # ─────────────────────────────────────────────
+  # Stage 5: Security Scan
+  # ─────────────────────────────────────────────
+  security:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for secret scanning
+
+      - name: Secret detection
+        run: |
+          echo "🔑 Scanning for leaked secrets..."
+          
+          # Common secret patterns
+          PATTERNS=(
+            'AKIA[0-9A-Z]{16}'                    # AWS Access Key
+            'AIza[0-9A-Za-z\-_]{35}'              # Google API Key
+            'sk-[a-zA-Z0-9]{20,}'                 # OpenAI/Stripe keys
+            'ghp_[a-zA-Z0-9]{36}'                 # GitHub PAT
+            'glpat-[a-zA-Z0-9\-_]{20,}'           # GitLab PAT
+            'xox[baprs]-[a-zA-Z0-9\-]+'           # Slack tokens
+            'password\s*[:=]\s*["\x27][^"\x27]+'   # Hardcoded passwords
+            'secret\s*[:=]\s*["\x27][^"\x27]+'     # Hardcoded secrets
+          )
+          
+          FOUND=0
+          for pattern in "${PATTERNS[@]}"; do
+            MATCHES=$(grep -rn --include="*.ts" --include="*.js" --include="*.py" \
+              --include="*.env" --include="*.yml" --include="*.yaml" \
+              --include="*.json" --include="*.toml" --include="*.cfg" \
+              -E "$pattern" . 2>/dev/null | grep -v node_modules | grep -v ".git/" || true)
+            if [ -n "$MATCHES" ]; then
+              echo "⚠️ Potential secret found (pattern: ${pattern:0:20}...):"
+              echo "$MATCHES"
+              FOUND=$((FOUND + 1))
+            fi
+          done
+          
+          if [ "$FOUND" -gt 0 ]; then
+            echo ""
+            echo "❌ Found $FOUND potential secret pattern(s) — review before merging"
+            exit 1
+          fi
+          
+          echo "✅ No secrets detected"
+
+      - name: Check .gitignore coverage
+        run: |
+          echo "📄 Verifying .gitignore covers sensitive files..."
+          
+          SENSITIVE_PATTERNS=(".env" ".env.local" "*.pem" "*.key" "id_rsa" "credentials.json")
+          MISSING=0
+          
+          if [ -f .gitignore ]; then
+            for pat in "${SENSITIVE_PATTERNS[@]}"; do
+              if ! grep -q "$pat" .gitignore 2>/dev/null; then
+                echo "⚠️ .gitignore missing pattern: $pat"
+                MISSING=$((MISSING + 1))
+              fi
+            done
+          else
+            echo "❌ No .gitignore found!"
+            MISSING=1
+          fi
+          
+          if [ "$MISSING" -gt 0 ]; then
+            echo "⚠️ $MISSING sensitive pattern(s) not covered by .gitignore"
+          else
+            echo "✅ .gitignore covers all standard sensitive patterns"
+          fi
+
+  # ─────────────────────────────────────────────
+  # Stage 6: Regression Gate (Cross-Phase)
+  # ─────────────────────────────────────────────
+  regression-gate:
+    name: 🔄 Regression Gate
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run full regression suite
+        run: |
+          echo "🔄 Running cross-phase regression gate..."
+          
+          # Run all test suites, not just changed files
+          npm test --if-present -- --coverage 2>/dev/null || {
+            echo "❌ Regression tests failed — check test output above"
+            exit 1
+          }
+          
+          echo "✅ All regression tests passed"
+
+      - name: Compare coverage with main
+        run: |
+          echo "📊 Coverage comparison would go here"
+          echo "Tip: Use a coverage service (Codecov, Coveralls) for historical tracking"
+
+  # ─────────────────────────────────────────────
+  # Final: PR Status Summary
+  # ─────────────────────────────────────────────
+  pr-summary:
+    name: ✅ PR Summary
+    runs-on: ubuntu-latest
+    needs: [lint, test, stub-detection, security]
+    if: always()
+    steps:
+      - name: Check all jobs
+        run: |
+          echo "📊 GSD CI Pipeline Summary"
+          echo "=========================="
+          echo "Lint:           ${{ needs.lint.result }}"
+          echo "Tests:          ${{ needs.test.result }}"
+          echo "Stub Detection: ${{ needs.stub-detection.result }}"
+          echo "Security:       ${{ needs.security.result }}"
+          
+          if [ "${{ needs.lint.result }}" = "failure" ] || \
+             [ "${{ needs.test.result }}" = "failure" ] || \
+             [ "${{ needs.stub-detection.result }}" = "failure" ] || \
+             [ "${{ needs.security.result }}" = "failure" ]; then
+            echo ""
+            echo "❌ Pipeline FAILED — fix issues before merging"
+            exit 1
+          fi
+          
+          echo ""
+          echo "✅ All checks passed — ready for review"
