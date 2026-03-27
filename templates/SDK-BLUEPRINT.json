@@ -1,0 +1,46 @@
+{
+  "blueprint": "blueprint-name",
+  "version": "1.0",
+  "project": {
+    "name": "Project Name",
+    "description": "Brief project description",
+    "techStack": ["TypeScript", "Express", "PostgreSQL"]
+  },
+  "requirements": {
+    "v1": [
+      "Requirement 1",
+      "Requirement 2"
+    ],
+    "v2": [],
+    "outOfScope": [
+      "Not included in this scope"
+    ]
+  },
+  "workflow": {
+    "skipDiscuss": true,
+    "skipResearch": false,
+    "autoAdvance": true,
+    "executionMode": "autonomous",
+    "peerReview": {
+      "enabled": true,
+      "preferDifferentModel": true
+    },
+    "pauseAt": ["ship"]
+  },
+  "shipping": {
+    "createPR": true,
+    "baseBranch": "main",
+    "branchPrefix": "feat",
+    "squash": true,
+    "labels": ["gsd-sdk"]
+  },
+  "safetyRails": {
+    "maxWaves": 5,
+    "maxReworkCycles": 3,
+    "maxExecutionTime": "30m",
+    "requirePeerReview": true,
+    "blockOnSecurityIssue": true,
+    "notifyOnComplete": true,
+    "notifyOnFailure": true
+  }
+}

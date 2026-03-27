@@ -1,0 +1,27 @@
+{
+  "agentId": "agent-name",
+  "model": "model-name",
+  "role": "backend-dev | frontend-dev | qa | security | architect",
+  "totalTasks": 0,
+  "metrics": {
+    "firstPassRate": 0.0,
+    "avgReworkCycles": 0.0,
+    "stubRate": 0.0,
+    "regressionRate": 0.0,
+    "avgCompletionTime": "0m",
+    "planAdherenceRate": 0.0
+  },
+  "strengths": [],
+  "weaknesses": [],
+  "taskHistory": [
+    {
+      "taskId": "example-task-1",
+      "type": "API",
+      "result": "pass",
+      "reworkCycles": 0,
+      "date": "2026-01-01"
+    }
+  ],
+  "recentTrend": "stable",
+  "lastUpdated": "2026-01-01T00:00:00Z"
+}
