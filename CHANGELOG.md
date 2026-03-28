@@ -5,6 +5,24 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-03-29
+
+### Added
+
+**Cherry-picked from GSD v1.30:**
+- **GSD SDK** — Headless TypeScript SDK for autonomous project execution via blueprints (`docs/gsd-sdk.md`, `templates/SDK-BLUEPRINT.json`)
+
+**New Workflows & Guards:**
+- **UI-Phase & UI-Review** — Formalized UI design contracts and 6-pillar visual audit (`docs/ui-phase-workflow.md`, `templates/UI-CONTRACT.md`)
+- **Security Scanning CI** — Automated prompt injection, secret scanning, and base64 detection in the workflow (`docs/security-scanning-ci.md`)
+
+**New Roadmap Items:**
+- **Future:** AI-powered plan quality scoring and blueprint marketplace.
+
+### Changed
+- Document version bumped to 1.8.0 (Workflow Version 1.8)
+- Features count increased to 65+.
+
 ## [1.7.0] - 2026-03-28
 
 ### Added
