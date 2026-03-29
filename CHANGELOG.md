@@ -5,6 +5,20 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2026-03-30
+
+### Added
+
+**New Recipes:**
+- **Bugfix / Hotfix Fast-Track** — Triage decision tree, Hotfix vs Regression paths, forensics template, agent delegation table, and anti-patterns for production bugs (`recipes/bugfix-hotfix.md`)
+
+**New Docs:**
+- **Troubleshooting Guide** — Top 10 common multi-agent workflow failures with root causes, fixes, and prevention for every scenario: wrong output, wave deadlock, context rot, spec drift, scope creep, QA ping-pong, credential errors, stub code, plan gaps, and broken production deploys (`docs/troubleshooting.md`)
+
+### Changed
+- Document version bumped to 1.9.0 (Workflow Version 1.9)
+- Features count increased to 70+
+
 ## [1.8.0] - 2026-03-29
 
 ### Added

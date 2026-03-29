@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-65+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-70+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.8.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.9.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -78,6 +78,8 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | 🌊 **Wave Execution Guide** | Patterns for parallel agent orchestration and dependency management |
 | 💉 **Agent Skill Injection** | Inject project-specific skills into sub-agents via config |
 | 🎨 **UI-Phase & UI-Review** | Formalized autonomous workflow steps for frontend development |
+| 🚑 **Bugfix / Hotfix Fast-Track** | Triage decision tree, Hotfix vs Regression paths, forensics template and agent delegation for production bugs |
+| 🛠️ **Troubleshooting Guide** | Top 10 multi-agent workflow failures — root causes, fixes, and prevention patterns |
 | 🛡️ **Security Scanning CI** | Automated prompt injection and secret scanning in CI pipeline |
 | 🧭 **Advisor Mode** | Lightweight parallel agent analysis for gray areas before decisions |
 | 📋 **Milestone Summary** | Post-build onboarding and feature summaries for completed milestones |
@@ -121,8 +123,8 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 gsd-openclaw/
 ├── workflow/
 │   └── gsd-workflow.md         # Core workflow specification
-├── docs/                       # 24 comprehensive guides
-├── recipes/                    # Step-by-step feature patterns
+├── docs/                       # 25 comprehensive guides
+├── recipes/                    # Step-by-step feature patterns (3 recipes)
 ├── templates/                  # Planning document templates
 ├── ci-templates/               # GitHub Actions & GitLab CI pipelines
 ├── integrations/               # Issue tracker sync (GitHub/GitLab)
@@ -447,6 +449,7 @@ Comprehensive guides for every aspect of multi-agent development:
 | [🤖 GSD SDK](docs/gsd-sdk.md) | Headless autonomous execution with blueprints |
 | [🌊 Windsurf Runtime](docs/windsurf-runtime.md) | Using GSD within the Windsurf (Codeium) environment |
 | [💉 Agent Skill Injection](docs/agent-skill-injection.md) | Inject project-specific skills into sub-agents |
+| [🛠️ Troubleshooting](docs/troubleshooting.md) | Top 10 multi-agent workflow failures — root causes, fixes, prevention |
 
 ---
 
@@ -460,6 +463,9 @@ cat recipes/api-with-frontend.md
 
 # UI Redesign & Brand Alignment
 cat recipes/ui-redesign.md
+
+# Bugfix / Hotfix Fast-Track
+cat recipes/bugfix-hotfix.md
 ```
 
 ### CI/CD Pipeline Templates
