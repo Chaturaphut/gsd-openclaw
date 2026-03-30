@@ -5,6 +5,22 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0] - 2026-03-31
+
+### Added
+
+**New Recipe:**
+- **Data Migration** — Safe migration workflow with staged execution, rollback plans, dual-write strategy, agent delegation map (Levi/DBA primary), and full checklist for zero-downtime schema changes (`recipes/data-migration.md`)
+
+**New Docs:**
+- **Workstream Namespacing** — Parallel milestone execution guide: how to run 2-4 workstreams simultaneously without branch conflicts, coordination via HANDOFF.json, merge order rules, OpenClaw spawn pattern, and anti-patterns (`docs/workstream-namespacing.md`) — cherry-picked from GSD v1.28.0
+
+### Changed
+- Document version bumped to 1.10.0
+- Features count increased to 72+
+
+---
+
 ## [1.9.0] - 2026-03-30
 
 ### Added

@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-70+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-72+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.9.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.10.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -124,7 +124,7 @@ gsd-openclaw/
 ├── workflow/
 │   └── gsd-workflow.md         # Core workflow specification
 ├── docs/                       # 25 comprehensive guides
-├── recipes/                    # Step-by-step feature patterns (3 recipes)
+├── recipes/                    # Step-by-step feature patterns (4 recipes)
 ├── templates/                  # Planning document templates
 ├── ci-templates/               # GitHub Actions & GitLab CI pipelines
 ├── integrations/               # Issue tracker sync (GitHub/GitLab)
@@ -438,6 +438,7 @@ Comprehensive guides for every aspect of multi-agent development:
 | [🤝 Interactive Executor](docs/interactive-executor.md) | Pair-programming mode with human review at each step |
 | [🔧 MCP Tool Awareness](docs/mcp-tool-awareness.md) | Discover and leverage MCP tools in GSD workflows |
 | [🛡️ Execution Hardening](docs/execution-hardening.md) | Pre-wave dependency checks and cross-plan data contracts |
+| [🔀 Workstream Namespacing](docs/workstream-namespacing.md) | Parallel milestone execution, branch isolation, merge order, cross-workstream coordination |
 | [🏢 Multi-Repo Workspace](docs/multi-repo-workspace.md) | Manage multiple GSD projects with portfolio coordination |
 | [⚡ Fast Mode](docs/fast-mode.md) | Skip planning for trivial single-file changes |
 | [🔍 Peer Review](docs/peer-review.md) | Cross-AI code review using different models |
@@ -466,6 +467,9 @@ cat recipes/ui-redesign.md
 
 # Bugfix / Hotfix Fast-Track
 cat recipes/bugfix-hotfix.md
+
+# Safe Data Migration
+cat recipes/data-migration.md
 ```
 
 ### CI/CD Pipeline Templates
