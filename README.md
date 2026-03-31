@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-72+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-74+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.10.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.11.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -450,6 +450,8 @@ Comprehensive guides for every aspect of multi-agent development:
 | [🤖 GSD SDK](docs/gsd-sdk.md) | Headless autonomous execution with blueprints |
 | [🌊 Windsurf Runtime](docs/windsurf-runtime.md) | Using GSD within the Windsurf (Codeium) environment |
 | [💉 Agent Skill Injection](docs/agent-skill-injection.md) | Inject project-specific skills into sub-agents |
+| [🔬 Forensics Guide](docs/forensics-guide.md) | Post-mortem investigation workflow: FORENSICS.md template, agent delegation by failure type, debug knowledge base |
+| [🧭 Advisor Mode](docs/advisor-mode.md) | Research-backed decisions with parallel specialists: spawn pattern, synthesis template, agent selection matrix |
 | [🛠️ Troubleshooting](docs/troubleshooting.md) | Top 10 multi-agent workflow failures — root causes, fixes, prevention |
 
 ---

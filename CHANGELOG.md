@@ -5,6 +5,20 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2026-04-01
+
+### Added
+
+**New Docs:**
+- **Forensics Guide** — Structured post-mortem investigation workflow for multi-agent failures: FORENSICS.md artifact template, agent delegation table by failure type, debug knowledge base integration, OpenClaw spawn pattern, and anti-patterns (`docs/forensics-guide.md`) — cherry-picked from GSD v1.28.0
+- **Advisor Mode** — Research-backed decision making with parallel specialist agents: spawn pattern, synthesis template, agent selection matrix by decision domain, and real example of "Build vs Buy" analysis (`docs/advisor-mode.md`) — cherry-picked from GSD v1.27.0
+
+### Changed
+- Document version bumped to 1.11.0
+- Features count increased to 74+
+
+---
+
 ## [1.10.0] - 2026-03-31
 
 ### Added
