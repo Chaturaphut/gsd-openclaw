@@ -5,6 +5,20 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.12.0] - 2026-04-02
+
+### Added
+
+**New Docs:**
+- **Handoff Best Practices** — Complete guide to session continuity: HANDOFF.json contract schema, receiving agent protocol, partial handoff patterns, cross-agent API contract injection, anti-patterns table, and multi-wave handoff chain visualization (`docs/handoff-best-practices.md`)
+- **Scaling Agents** — From 5 to 50 agents: wave-based scaling patterns, workstream namespacing at 20+ agents, agent pool management at 35-50 agents, anti-pattern catalog (spawn storm, invisible agent, bottleneck coordinator, shared state race), monitoring protocol, cost management strategies, and scaling checklist (`docs/scaling-agents.md`)
+
+### Changed
+- Document version bumped to 1.12.0
+- Features count increased to 76+
+
+---
+
 ## [1.11.0] - 2026-04-01
 
 ### Added

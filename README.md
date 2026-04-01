@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-74+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-76+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.11.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.12.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -78,6 +78,8 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | 🌊 **Wave Execution Guide** | Patterns for parallel agent orchestration and dependency management |
 | 💉 **Agent Skill Injection** | Inject project-specific skills into sub-agents via config |
 | 🎨 **UI-Phase & UI-Review** | Formalized autonomous workflow steps for frontend development |
+| 🤝 **Handoff Best Practices** | HANDOFF.json contract, API contract injection, multi-wave chain patterns |
+| 📈 **Scaling Agents Guide** | From 5 to 50 agents: pool management, wave design, anti-patterns, cost control |
 | 🚑 **Bugfix / Hotfix Fast-Track** | Triage decision tree, Hotfix vs Regression paths, forensics template and agent delegation for production bugs |
 | 🛠️ **Troubleshooting Guide** | Top 10 multi-agent workflow failures — root causes, fixes, and prevention patterns |
 | 🛡️ **Security Scanning CI** | Automated prompt injection and secret scanning in CI pipeline |
@@ -123,7 +125,7 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 gsd-openclaw/
 ├── workflow/
 │   └── gsd-workflow.md         # Core workflow specification
-├── docs/                       # 25 comprehensive guides
+├── docs/                       # 27 comprehensive guides
 ├── recipes/                    # Step-by-step feature patterns (4 recipes)
 ├── templates/                  # Planning document templates
 ├── ci-templates/               # GitHub Actions & GitLab CI pipelines
@@ -453,6 +455,8 @@ Comprehensive guides for every aspect of multi-agent development:
 | [🔬 Forensics Guide](docs/forensics-guide.md) | Post-mortem investigation workflow: FORENSICS.md template, agent delegation by failure type, debug knowledge base |
 | [🧭 Advisor Mode](docs/advisor-mode.md) | Research-backed decisions with parallel specialists: spawn pattern, synthesis template, agent selection matrix |
 | [🛠️ Troubleshooting](docs/troubleshooting.md) | Top 10 multi-agent workflow failures — root causes, fixes, prevention |
+| [🤝 Handoff Best Practices](docs/handoff-best-practices.md) | HANDOFF.json contract, receiving agent protocol, API contract injection, anti-patterns, multi-wave chain |
+| [📈 Scaling Agents](docs/scaling-agents.md) | From 5 to 50 agents: pool types, wave design, spawn anti-patterns, monitoring, cost control |
 
 ---
 
