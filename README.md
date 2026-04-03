@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="#-features"><img src="https://img.shields.io/badge/features-76+-blue?style=for-the-badge" alt="Features" /></a>
+  <a href="#-features"><img src="https://img.shields.io/badge/features-80+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.12.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.13.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -115,6 +115,10 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | 🤖 **GSD SDK** | Headless autonomous execution with blueprints and safety rails |
 | 📝 **SDK Blueprints** | Pre-configured project templates for batch execution |
 | 🌊 **Windsurf Runtime** | Full support for Windsurf (Codeium) agent environment |
+| 📝 **Verified Doc Gen** | Automated workflow to maintain code-to-doc consistency via `/gsd:docs-update` |
+| 🏗️ **Project Prefixing** | Namespace phase directories in shared workspaces via `project_code` config |
+| 🛡️ **Security Enforcement** | Post-execution security audit stage anchored to project threat models |
+| 🔗 **Chain Mode** | Seamless discuss-to-execute flow with the `--chain` flag |
 | 🍳 **Feature Recipes** | Step-by-step guides for common full-stack development patterns |
 
 ---
@@ -126,7 +130,7 @@ gsd-openclaw/
 ├── workflow/
 │   └── gsd-workflow.md         # Core workflow specification
 ├── docs/                       # 27 comprehensive guides
-├── recipes/                    # Step-by-step feature patterns (4 recipes)
+├── recipes/                    # Step-by-step feature patterns (5 recipes)
 ├── templates/                  # Planning document templates
 ├── ci-templates/               # GitHub Actions & GitLab CI pipelines
 ├── integrations/               # Issue tracker sync (GitHub/GitLab)
@@ -457,6 +461,7 @@ Comprehensive guides for every aspect of multi-agent development:
 | [🛠️ Troubleshooting](docs/troubleshooting.md) | Top 10 multi-agent workflow failures — root causes, fixes, prevention |
 | [🤝 Handoff Best Practices](docs/handoff-best-practices.md) | HANDOFF.json contract, receiving agent protocol, API contract injection, anti-patterns, multi-wave chain |
 | [📈 Scaling Agents](docs/scaling-agents.md) | From 5 to 50 agents: pool types, wave design, spawn anti-patterns, monitoring, cost control |
+| [🏗️ Legacy Migration](recipes/legacy-code-migration.md) | Step-by-step guide for migrating legacy modules with parity checking and shadow proxying |
 
 ---
 
@@ -476,6 +481,9 @@ cat recipes/bugfix-hotfix.md
 
 # Safe Data Migration
 cat recipes/data-migration.md
+
+# Legacy Code Migration
+cat recipes/legacy-code-migration.md
 ```
 
 ### CI/CD Pipeline Templates
@@ -605,6 +613,11 @@ open dashboard/index.html
 - [x] Data-Flow Tracing and Environment Audit
 - [x] Temp File Reaper tool
 - [x] GSD SDK for headless autonomous execution with blueprints
+- [x] Verified Documentation Generation (`/gsd:docs-update`)
+- [x] Project Code Prefixing (`project_code`)
+- [x] Security-First Enforcement Layer
+- [x] Chain Mode (`--chain` flag)
+- [x] Legacy Code Migration Recipe
 
 ### 🔮 Future
 - [ ] Real-time agent monitoring via WebSocket

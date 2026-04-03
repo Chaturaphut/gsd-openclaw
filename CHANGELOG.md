@@ -5,6 +5,25 @@ All notable changes to GSD-OpenClaw will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.13.0] - 2026-04-04
+
+### Added
+
+**New Recipe:**
+- **Legacy Code Migration** — Detailed workflow for migrating legacy modules (PHP → Node, JS → TS) using the Strangler Fig pattern: shadow proxying, parity checker logic, "Gold Master" recording, and staged cutover (`recipes/legacy-code-migration.md`)
+
+**Cherry-picked from GSD v1.31:**
+- **Verified Documentation Generation** — New `/gsd:docs-update` command workflow to ensure code-to-doc consistency and automated README/docs maintenance.
+- **Project Code Prefixing** — Support for `project_code` config to namespace phase directories in monorepos or shared workspaces.
+- **Security-First Enforcement Layer** — Formalized stage for threat-model-anchored verification following implementation.
+- **Chain Mode** — Support for `--chain` flag in discuss-phase to auto-trigger plan and execution cycles.
+
+### Changed
+- Document version bumped to 1.13.0
+- Features count increased to 78+
+
+---
+
 ## [1.12.0] - 2026-04-02
 
 ### Added
