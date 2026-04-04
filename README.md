@@ -12,7 +12,7 @@
 <p align="center">
   <a href="#-features"><img src="https://img.shields.io/badge/features-80+-blue?style=for-the-badge" alt="Features" /></a>
   <a href="#-quick-start"><img src="https://img.shields.io/badge/setup-5_min-green?style=for-the-badge" alt="Quick Start" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.13.0-purple?style=for-the-badge" alt="Version" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.14.0-purple?style=for-the-badge" alt="Version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange?style=for-the-badge" alt="License" /></a>
   <a href="https://github.com/gsd-build/get-shit-done"><img src="https://img.shields.io/badge/based_on-GSD_by_TÂCHES-ff6b6b?style=for-the-badge" alt="Based on GSD" /></a>
 </p>
@@ -101,6 +101,9 @@ Every stage has clear inputs, outputs, owners, and verification gates — specif
 | 🤝 **Interactive Executor** | Pair-programming mode with human review at each task |
 | 🔧 **MCP Tool Awareness** | Discover and use MCP tools in GSD workflows |
 | 🛡️ **Execution Hardening** | Pre-wave dependency checks and cross-plan data contracts |
+| ⚖️ **State Consistency Gates** | Validation and sync workflows to prevent drift between STATE.md and filesystem |
+| 🛡️ **Research Gate** | Planning is blocked until critical open questions in RESEARCH.md are resolved |
+| ⏱️ **Sequential Dispatch** | Sequential task dispatching for parallel waves to eliminate race conditions |
 | 🏢 **Multi-Repo Workspace** | Manage multiple GSD projects with cross-project dependencies |
 | ⚡ **Fast Inline Mode** | Skip planning for trivial single-file changes |
 | 🔍 **Cross-AI Peer Review** | Different model reviews code before QA |
@@ -613,6 +616,9 @@ open dashboard/index.html
 - [x] Data-Flow Tracing and Environment Audit
 - [x] Temp File Reaper tool
 - [x] GSD SDK for headless autonomous execution with blueprints
+- [x] STATE.md Consistency Gates (Validate & Sync)
+- [x] Research Gate Blocks Planning for unresolved questions
+- [x] Sequential Worktree Dispatch for parallel waves
 - [x] Verified Documentation Generation (`/gsd:docs-update`)
 - [x] Project Code Prefixing (`project_code`)
 - [x] Security-First Enforcement Layer
